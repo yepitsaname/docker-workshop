@@ -3,3 +3,7 @@ services:
     build: ui/
     ports: 
       - "5173:5173"
+  api:
+    build: api/
+    ports:
+      - "8080:8080"
