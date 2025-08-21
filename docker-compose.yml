@@ -2,18 +2,22 @@ services:
   db:
     image: postgres:latest
     environment:
-      - DATABASE_HOST=127.0.0.1
+      - DATABASE_HOST=localhost
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
     ports:
       - "5432:5432"
-    volumes: 
+    volumes:
       - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
   ui:
     build: ui/
-    ports: 
+    ports:
       - "5173:5173"
+    depends_on:
+      - api
   api:
     build: api/
     ports:
       - "8080:8080"
+    depends_on:
+      - db
