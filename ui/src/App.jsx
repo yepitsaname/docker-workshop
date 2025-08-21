@@ -2,11 +2,19 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useEffect } from 'react'
 
 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [authors, setAuthors] = useState();
+
+  useEffect(()=>{
+    fetch('http://127.0.0.1:8080/authors')
+      .then(res => res.json())
+      .then(data => console.log(data));
+  },[])
 
   return (
     <>
@@ -31,7 +39,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <p>
-        Sam Cusimano 
+        Sam Cusimano
         Fernando Berry
       </p>
     </>

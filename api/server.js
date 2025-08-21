@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 8080;
+const cors = require('cors');
+app.use(cors());
 
 require("dotenv").config()
 const knexfile = require('./knexfile.js')
